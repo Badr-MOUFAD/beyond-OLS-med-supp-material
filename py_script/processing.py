@@ -16,10 +16,14 @@ def adapt_to_group_lasso(X: pd.DataFrame) -> Tuple[pd.DataFrame, List[int]]:
         Returns X rearranged as numerical features, one-hot encoded
         categorical features and a list of group size (every numerical
         feature is considered as single group)
+
+    Note
+    ----
+    This function will changes the order of columns dataframe
     """
-    X_rearranged = pd.concat(axis=1
-                             (X.select_dtypes(exclude='object'),
-                              X.select_dtypes(include='object')))
+    X_rearranged = pd.concat((X.select_dtypes(exclude='object'),
+                              X.select_dtypes(include='object')),
+                             axis=1)
     groups_size = []
     for col in X_rearranged.columns:
         is_categorical = X[col].dtype == 'object'
