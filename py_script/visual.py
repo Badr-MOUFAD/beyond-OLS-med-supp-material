@@ -51,3 +51,7 @@ def plot_categories(df: pd.DataFrame,
 
     fig.update_layout(title="Categories counts", height=height)
     return fig
+
+
+if __name__ == '__main__':
+    pass
