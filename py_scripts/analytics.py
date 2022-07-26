@@ -4,25 +4,26 @@ import pandas as pd
 import numpy as np
 from celer import celer_path
 
-from py_script.processing import adapt_to_group_lasso
+from py_scripts.processing import adapt_to_group_lasso
 
 
 def score_features(X: pd.DataFrame,
                    y: pd.DataFrame
                    ) -> List[Tuple[str, float]]:
-    r"""Score features in dataframe using Group Lasso.
+    r"""Score features in dataframe using GroupLasso.
 
     Score function:
 
     .. math::
 
-        \max \{ \lambda \ |  \ \beta_j \neq 0 \}
+        \max \{ \frac{\lambda}{\lambda_{max}} \ | \ \beta_j \neq 0 \}
 
 
     Parameters
     ----------
     X : pd.DataFrame
         Dataframe. Feature with ``object`` type are considered categorical.
+
     y : pd.DataFrame
         Target feature.
 
@@ -54,7 +55,7 @@ def score_features(X: pd.DataFrame,
             coefs_g = coefs[:, i][grp_g_indices]
 
             if np.linalg.norm(coefs_g, ord=np.inf) > 0:
-                grp_scores[g] = alphas[i]
+                grp_scores[g] = alphas[i] / alphas[0]  # alpha / alpha_max
 
     return list(zip(X.columns, grp_scores))
 

@@ -3,7 +3,7 @@ import pandas as pd
 
 
 def adapt_to_group_lasso(X: pd.DataFrame) -> Tuple[pd.DataFrame, List[int]]:
-    """Prepare dataframe for GroupLasso.
+    """Prepare dataframe to be fitted using a GroupLasso.
 
     Parameters
     ----------
@@ -12,14 +12,17 @@ def adapt_to_group_lasso(X: pd.DataFrame) -> Tuple[pd.DataFrame, List[int]]:
 
     Returns
     -------
-    Tuple[pd.DataFrame, List[int]]
-        Returns X rearranged as numerical features, one-hot encoded
-        categorical features and a list of group size (every numerical
-        feature is considered as single group).
+    X_dummies: pd.DataFrame
+        X rearranged as continuous features, one-hot encoded
+        categorical features.
+    
+    groups_size: list of int
+        list of group size where continuous
+        features are considered as group of size 1.
 
     Note
     ----
-    This function will changes the order of columns dataframe.
+    This function changes the order of columns dataframe.
     """
     X_rearranged = pd.concat((X.select_dtypes(exclude='object'),
                               X.select_dtypes(include='object')),
@@ -30,7 +33,7 @@ def adapt_to_group_lasso(X: pd.DataFrame) -> Tuple[pd.DataFrame, List[int]]:
         size = len(X[col].value_counts()) if is_categorical else 1
         groups_size.append(size)
 
-    return (pd.get_dummies(X_rearranged), groups_size)
+    return pd.get_dummies(X_rearranged), groups_size
 
 
 if __name__ == '__main__':

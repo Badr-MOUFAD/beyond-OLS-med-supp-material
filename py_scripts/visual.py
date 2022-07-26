@@ -10,7 +10,7 @@ def plot_categories(df: pd.DataFrame,
                     n_cols=2,
                     height=800,
                     ) -> go.Figure:
-    """Plot a bar chat of the class count of every category.
+    """Plot a bar chat of the values count of every category.
 
     Parameters
     ----------
