@@ -29,7 +29,7 @@ def score_features(X: pd.DataFrame,
 
     Returns
     -------
-    np.ndarray
+    List of tuples (feature_name, score)
         Return a list of tuples with the name of feature and the corresponding score.
         ``[(feature_name, score), ...]``.
     """
