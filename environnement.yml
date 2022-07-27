@@ -1,0 +1,17 @@
+name: feature-selection-grp-lasso
+channels:
+  - conda-forge
+dependencies:
+  - python=3.8
+  - pip
+  - jupyter
+  - jupytext
+  # data
+  - pandas
+  - numpy
+  # ML
+  - scikit-learn
+  - pip:
+    - celer
+  # graphics
+  - plotly
