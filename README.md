@@ -6,7 +6,7 @@ _— Leveraging linear regression for feature selection of continuous/categorica
 ## Overview
 
 This repository is a supplementary material for the medium article 
-**Beyond linear regression**: Leveraging linear regression for feature selection of continuous/categorical variables.
+[**Beyond linear regression**: Leveraging linear regression for feature selection of continuous/categorical variables](https://towardsdatascience.com/beyond-linear-regression-467a7fc3bafb).
 
 It applies the introduced feature selection technic on the [Automobile Data Set](https://archive.ics.uci.edu/ml/datasets/Automobile).
 The objective is to find the top $K$ most relevant features that explains the price of the car.
@@ -42,7 +42,7 @@ pip install -e .
 
 ## useful links
 
-- Beyond linear regression medium article: [link]
+- Beyond linear regression medium article: https://towardsdatascience.com/beyond-linear-regression-467a7fc3bafb
 - Automobile Dataset: https://archive.ics.uci.edu/ml/datasets/Automobile
 - cookiecutter Simple DS project article: https://towardsdatascience.com/its-time-to-structure-your-data-science-project-1fa064fbe46
 - ``celer`` documentation: https://mathurinm.github.io/celer/
