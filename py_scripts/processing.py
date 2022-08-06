@@ -8,21 +8,21 @@ def adapt_to_group_lasso(X: pd.DataFrame) -> Tuple[pd.DataFrame, List[int]]:
     Parameters
     ----------
     X : pd.DataFrame
-        Dataframe.
+        Dataframe. The columns of ``X`` shouldn't be one hot encoded.
 
     Returns
     -------
     X_dummies: pd.DataFrame
         X rearranged as continuous features, one-hot encoded
         categorical features.
-    
+
     groups_size: list of int
         list of group size where continuous
         features are considered as group of size 1.
 
     Note
     ----
-    This function changes the order of columns dataframe.
+    This function changes the order of columns in dataframe.
     """
     X_rearranged = pd.concat((X.select_dtypes(exclude='object'),
                               X.select_dtypes(include='object')),
